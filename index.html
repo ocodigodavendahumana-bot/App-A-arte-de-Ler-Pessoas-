@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>O Código da Venda Humana — Diagnóstico de Perfil</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
@@ -168,33 +167,6 @@
   .btn-save-client{background:linear-gradient(135deg,#c9973a,#e8b84b);border:none;color:#fff;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;padding:10px 18px;border-radius:50px;cursor:pointer;white-space:nowrap;box-shadow:0 3px 12px rgba(201,151,58,0.4);transition:all 0.2s;}
   .btn-save-client:hover{transform:translateY(-1px);}
 
-  /* RELATORIO PDF (fundo branco, impressão) */
-  .report-print{position:fixed;left:-99999px;top:0;width:794px;background:#fff;color:#1a1a1a;font-family:'Inter',sans-serif;padding:36px 42px;}
-  .report-print *{box-sizing:border-box;}
-  .rp-brand{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#c9973a;font-weight:700;margin-bottom:6px;}
-  .rp-h1{font-family:'Cinzel',serif;font-size:23px;color:#0d1b2e;margin-bottom:3px;}
-  .rp-sub{font-size:12px;color:#777;margin-bottom:14px;}
-  .rp-meta{background:#f5f2ea;border-radius:8px;padding:10px 14px;font-size:11px;color:#555;margin-bottom:18px;display:flex;flex-wrap:wrap;gap:14px;}
-  .rp-meta b{color:#0d1b2e;}
-  .rp-h2{font-family:'Cinzel',serif;font-size:13px;color:#0d1b2e;text-transform:uppercase;letter-spacing:1px;margin:20px 0 8px;padding-bottom:5px;border-bottom:2px solid #c9973a;}
-  .rp-p{font-size:11.5px;line-height:1.7;color:#333;margin-bottom:8px;}
-  .rp-box{background:#f7f3ea;border-left:3px solid #c9973a;padding:9px 13px;margin:7px 0;font-style:italic;font-size:11.5px;color:#5a4620;border-radius:0 6px 6px 0;}
-  .rp-cols{display:flex;gap:14px;}
-  .rp-col{flex:1;}
-  .rp-col-title{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
-  .rp-col-title.ok{color:#1d9e75;}
-  .rp-col-title.no{color:#c0392b;}
-  .rp-ul{margin:0 0 6px 16px;padding:0;}
-  .rp-ul li{font-size:11.5px;line-height:1.75;color:#333;margin-bottom:2px;}
-  .rp-table{width:100%;border-collapse:collapse;margin:6px 0 4px;}
-  .rp-table th{background:#0d1b2e;color:#fff;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;padding:7px 9px;text-align:left;}
-  .rp-table td{border:1px solid #e3ddce;padding:7px 9px;font-size:11px;color:#333;vertical-align:top;}
-  .rp-table tr:nth-child(even) td{background:#faf8f2;}
-  .rp-phase{background:#f9f7f1;border:1px solid #e3ddce;border-radius:8px;padding:10px 13px;margin-bottom:8px;}
-  .rp-phase-title{font-size:10.5px;font-weight:700;color:#c9973a;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;}
-  .rp-chip{display:inline-block;background:#0d1b2e;color:#e8b84b;font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;margin:2px 4px 2px 0;}
-  .rp-footer{margin-top:26px;padding-top:12px;border-top:1px solid #e3ddce;font-size:9.5px;color:#999;text-align:center;}
-
   /* CLIENTES */
   #screen-clientes{background:linear-gradient(160deg,#0d1b2e 0%,#162336 100%);padding:0 0 80px;min-height:600px;}
   .clientes-body{padding:20px 24px;}
@@ -225,7 +197,7 @@
   .client-profiles{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;}
   .client-profile-tag{display:flex;align-items:center;gap:5px;padding:3px 9px;border-radius:50px;font-size:11px;font-weight:600;}
   .client-obs{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.06);margin-top:6px;}
-  .client-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+  .client-actions{display:flex;gap:8px;margin-top:10px;}
   .btn-client-action{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);padding:6px 14px;border-radius:50px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;transition:all 0.2s;}
   .btn-client-action:hover{background:rgba(255,255,255,0.1);}
   .btn-client-action.del:hover{background:rgba(226,75,74,0.15);border-color:rgba(226,75,74,0.3);color:#f09595;}
@@ -267,7 +239,11 @@
     </div>
     <div class="form-group" style="margin-bottom:14px">
       <div class="form-label">Seu e-mail</div>
-      <input class="form-input" id="login-email" type="email" placeholder="email@exemplo.com" onkeydown="if(event.key==='Enter')handleLogin()">
+      <input class="form-input" id="login-email" type="email" placeholder="email@exemplo.com">
+    </div>
+    <div class="form-group" style="margin-bottom:14px">
+      <div class="form-label">Senha de acesso</div>
+      <input class="form-input" id="login-password" type="password" placeholder="Senha fornecida" onkeydown="if(event.key==='Enter')handleLogin()">
     </div>
     <button class="btn-start" id="btn-login" style="width:100%" onclick="handleLogin()">Entrar</button>
   </div>
@@ -456,16 +432,6 @@ const PROFILES={
   altaperf:{name:'Alta Performance',subtitle:'O Exigente Premium',dotColor:'#9b6ddb',emoji:'⭐',resumo:'Exigente, sofisticado e focado em excelência. Busca status, reconhecimento e exclusividade. Mediocridade não é opção.',keyphrase:'"Quero o melhor, não o comum"',decide:'Base em status + excelência. Canal: Visual sofisticado + Auditivo estratégico.',frase:'"Esta é a opção premium para quem exige o melhor."',verde:['Exclusividade e diferenciação','Qualidade em todos os detalhes','Status e reconhecimento','Experiências premium','Acabamento impecável'],vermelho:['Soluções genéricas','Mediocridade','Falta de sofisticação','Comparação com produtos comuns','Atendimento padronizado'],acoes:['Trate como VIP desde o primeiro contato','Destaque diferenciais únicos e exclusividade real','Use vocabulário sofisticado e referências de alto nível','Apresente cases de personalidades e marcas de prestígio','Feche reforçando o status que a aquisição proporciona'],funil:[{stage:'Atração',action:'Posicionamento premium'},{stage:'Conexão',action:'Nível e sofisticação'},{stage:'Diagnóstico',action:'Padrão elevado'},{stage:'Apresentação',action:'Diferencial único'},{stage:'Fechamento',action:'Exclusividade'},{stage:'Pós-venda',action:'Experiência premium'}],script:{ab:'"Isso que vou te apresentar não é para todo mundo — é uma solução de alto padrão para quem exige excelência em cada detalhe."',dev:'"Os diferenciais que separam isso de qualquer outra opção são exclusivos. Clientes de alto perfil escolheram exatamente por isso. O que você nota de diferença até agora?"',fech:'"Essa é a escolha de quem busca o melhor. Você está pronto para dar esse passo?"'},corpo:{formato:'Harmônico — proporções equilibradas, movimentos elegantes, postura confiante',postura:'Impecável, alinhamento perfeito, fluida e refinada — nunca brusca',olhar:'Avaliativo e constante, observa qualidade de tudo ao redor',maos:'Gesticulação refinada e precisa, aparência sempre cuidada',abertura:'Silêncio avaliativo seguido de pergunta técnica — está processando com interesse',resistencia:'Expressão crítica, compara com alternativas, questiona diferenciais'},combinados:{analitico:'Alta Performance com traço analítico: exige o melhor E quer provar isso com dados. Apresente diferenciais mensuráveis.',relacional:'Alta Performance com traço relacional: quer ser tratado como especial pela pessoa certa. Combine VIP com vínculo genuíno.',dominante:'Alta Performance com traço dominante: quer o melhor e quer rápido. Seja sofisticado E eficiente.',seguro:'Alta Performance com traço seguro: exige excelência mas teme errar o investimento. Reforce que premium = seguro.'}}
 };
 
-/* Dados complementares extraídos da Matriz de Comunicação Rápida — mesclados ao PROFILES */
-const TRAITS_EXTRA={
-  analitico:{fala:'Ideias, padrões, conceitos abstratos',ouve:'Lógica pura, questões profundas, prova concreta',decisionMaker:'Se fizer sentido no papel (literal)',nuncaDiga:['"Confie em mim"','"Sinta a energia"','Pressão de tempo'],digaAssim:['"Aqui estão os dados"','"A lógica é..."','"Você tem o tempo que precisar"'],gatilhos:['Rejeição de suas ideias','Pressão social constante','Crítica ao seu pensamento','Obrigação de se expressar emocionalmente'],validacao:['"Sua perspectiva é valiosa. Você enxerga padrões que ninguém mais vê."','"Seu tempo de reflexão produz ideias melhores. Obrigado por pensar profundamente nisso."'],medo:'Medo da Rejeição'},
-  relacional:{fala:'Emoções, necessidades, histórias pessoais',ouve:'Validação, empatia, sentido de pertencimento',decisionMaker:'Se se sentir cuidado(a) no processo',nuncaDiga:['Feedback frio','Isolá-lo(a)','Ignorar sentimentos'],digaAssim:['"Valorizo você E seu trabalho"','Check-ins frequentes','Validação emocional'],gatilhos:['Abandono emocional','Falta de feedback','Exclusão do grupo','Crítica pessoal (não profissional)'],validacao:['"Você é importante para este time. Sua presença faz diferença."','"Seu cuidado com as pessoas torna nosso ambiente melhor. Isso é um superpower."'],medo:'Medo do Abandono'},
-  dominante:{fala:'Estratégia, números, ROI, poder',ouve:'Dados, ganhos competitivos, oportunidades',decisionMaker:'Se lhe der vantagem estratégica',nuncaDiga:['Apelar emocionalmente','Imprecisão','Lentidão'],digaAssim:['Números claros','Estratégia explícita','Velocidade no resultado'],gatilhos:['Perda de poder/controle','Manipulação','Imprecisão de informação','Pessoa que não mantém a palavra'],validacao:['"Sua estratégia foi brilhante. Você conseguiu ganhar quando outros desistiram."','"Você é a pessoa mais confiável para estar no comando em crise."'],medo:'Medo de Ser Manipulado'},
-  seguro:{fala:'Processos, segurança, passos detalhados',ouve:'Estabilidade, método testado, baixo risco',decisionMaker:'Se houver plano claro e segurança',nuncaDiga:['Mudanças súbitas','Falta de método','Improvisos'],digaAssim:['"Aqui está o plano"','"Vamos testar primeiro"','Processo estruturado'],gatilhos:['Mudança súbita sem aviso','Erro que poderia ter sido evitado','Julgamento por falha','Falta de plano/estrutura'],validacao:['"Seu método funciona. Os resultados falam por si."','"A forma como você aguenta a pressão é admirável. Você é o alicerce desse time."'],medo:'Medo da Humilhação'},
-  altaperf:{fala:'Resultados, performance, excelência',ouve:'Competição, superação, status',decisionMaker:'Se for o melhor e mais rápido',nuncaDiga:['"Isso é bom o suficiente"','Lentidão','Crítica pessoal'],digaAssim:['"Seu padrão é referência"','Rapidez','Crítica técnica apenas'],gatilhos:['Exigir perfeição mediana','Lentidão','Crítica pessoal/fracasso','Ser trocado por alguém "melhor"'],validacao:['"Seu padrão de excelência é o benchmark do time. Todos querem ser como você."','"Ninguém consegue fazer o que você faz com essa qualidade e velocidade."'],medo:'Medo de Ser Trocado'}
-};
-Object.keys(TRAITS_EXTRA).forEach(k=>Object.assign(PROFILES[k],TRAITS_EXTRA[k]));
-
 const QUESTIONS=[
   {text:'Como o cliente chegou na conversa?',options:[{text:'Pediu dados, materiais ou especificações antes de qualquer reunião',p:'analitico'},{text:'Veio indicado por alguém e chegou já com clima caloroso',p:'relacional'},{text:'Entrou direto no assunto e foi objetivo desde o início',p:'dominante'},{text:'Chegou com várias dúvidas e pediu explicações sobre riscos',p:'seguro'},{text:'Demonstrou conhecimento sobre o mercado e buscou algo diferenciado',p:'altaperf'}]},
   {text:'Como ele se comunicou durante a conversa?',options:[{text:'Fala pausada, escolhe as palavras e faz perguntas técnicas',p:'analitico'},{text:'Comunicativo, expressivo, conta histórias e se abre facilmente',p:'relacional'},{text:'Direto, breve, vai logo ao ponto e não gosta de rodeios',p:'dominante'},{text:'Cauteloso, pergunta bastante antes de se posicionar',p:'seguro'},{text:'Crítico e exigente, avalia cada detalhe com atenção',p:'altaperf'}]},
@@ -484,10 +450,24 @@ const QUESTIONS=[
   {text:'O que esse cliente mais quer sentir ao fechar?',options:[{text:'"Tomei a decisão certa, embasada e sem erro"',p:'analitico'},{text:'"Me sinto bem com essa pessoa — confio nela"',p:'relacional'},{text:'"Fiz o melhor negócio e vou ter resultado rápido"',p:'dominante'},{text:'"Estou seguro — não há riscos que me prejudiquem"',p:'seguro'},{text:'"Escolhi o melhor — isso reforça quem eu sou"',p:'altaperf'}]}
 ];
 
-let current=0,answers=[],rDom=null,rSec=null,rComp=[],rPct=null,clients=[];
+let current=0,answers=[],rDom=null,rSec=null,clients=[];
 
-async function loadClients(){try{const r=await window.storage.get('clientes_db');if(r)clients=JSON.parse(r.value);}catch(e){clients=[];}}
-async function persistClients(){try{await window.storage.set('clientes_db',JSON.stringify(clients));}catch(e){}}
+function escapeHtml(str){
+  return String(str==null?'':str).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+async function apiFetch(url,options={}){
+  const res=await fetch(url,{...options,headers:{'Content-Type':'application/json',...(options.headers||{})}});
+  if(res.status===401){showScreen('login');throw new Error('Sessão expirada, faça login novamente.');}
+  const data=await res.json().catch(()=>({}));
+  if(!res.ok){throw new Error(data.error||'Erro na requisição');}
+  return data;
+}
+
+async function loadClients(){
+  try{const data=await apiFetch('/api/clients');clients=data.clients||[];}
+  catch(e){clients=[];}
+}
 
 function showScreen(name){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
@@ -552,9 +532,6 @@ function showResult(){
   const comp=sorted.filter((s,i)=>i>=2&&Math.round((s[1]/total)*100)>=20).map(s=>s[0]);
   const P=PROFILES,dp=P[rDom],sp=P[rSec];
   showScreen('result');
-  rComp=comp;
-  rPct={dom:Math.round((sorted[0][1]/total)*100),sec:Math.round((sorted[1][1]/total)*100),comp:{}};
-  comp.forEach(ck=>{rPct.comp[ck]=Math.round((scores[ck]/total)*100);});
 
   const chips=sorted.map(([k,c])=>{const pct=Math.round((c/total)*100),isDom=k===rDom;return`<div class="profile-chip ${isDom?'dominant':''}"><span class="chip-dot" style="background:${P[k].dotColor}"></span><span class="chip-label">${P[k].name}</span><span class="chip-pct">${pct}%</span></div>`;}).join('');
   const domPct=Math.round((sorted[0][1]/total)*100),secPct=Math.round((sorted[1][1]/total)*100);
@@ -581,9 +558,8 @@ function showResult(){
     <div class="result-actions">
       <div class="action-row"><button class="action-toggle gold-row" id="toggle-script" onclick="togglePanel(this,'panel-script')"><div class="action-toggle-icon">✍️</div><div class="action-toggle-text"><div class="action-toggle-title">Script de abordagem — ${dp.name}</div><div class="action-toggle-desc">Abertura, desenvolvimento e fechamento personalizados</div></div><div class="action-toggle-arrow">▼</div></button><div class="action-panel" id="panel-script"><div class="panel-section-label">Abertura</div><div class="panel-box">${dp.script.ab}</div><div class="panel-section-label">Desenvolvimento</div><div class="panel-box">${dp.script.dev}</div><div class="panel-section-label">Fechamento</div><div class="panel-box">${dp.script.fech}</div></div></div>
       <div class="action-row"><button class="action-toggle" id="toggle-corpo" onclick="togglePanel(this,'panel-corpo')"><div class="action-toggle-icon">👁️</div><div class="action-toggle-text"><div class="action-toggle-title">Leitura corporal — ${dp.name}</div><div class="action-toggle-desc">Sinais físicos para identificar esse perfil</div></div><div class="action-toggle-arrow">▼</div></button><div class="action-panel" id="panel-corpo"><div class="corpo-grid"><div class="corpo-cell"><div class="corpo-cell-label">Formato</div><div class="corpo-cell-text">${dp.corpo.formato}</div></div><div class="corpo-cell"><div class="corpo-cell-label">Postura</div><div class="corpo-cell-text">${dp.corpo.postura}</div></div><div class="corpo-cell"><div class="corpo-cell-label">Olhar</div><div class="corpo-cell-text">${dp.corpo.olhar}</div></div><div class="corpo-cell"><div class="corpo-cell-label">Mãos</div><div class="corpo-cell-text">${dp.corpo.maos}</div></div><div class="corpo-cell"><div class="corpo-cell-label">✅ Abertura</div><div class="corpo-cell-text">${dp.corpo.abertura}</div></div><div class="corpo-cell"><div class="corpo-cell-label">⚠️ Resistência</div><div class="corpo-cell-text">${dp.corpo.resistencia}</div></div></div></div></div>
-      <div class="action-row"><button class="action-toggle gold-row" onclick="downloadResultReport(this)"><div class="action-toggle-icon">📄</div><div class="action-toggle-text"><div class="action-toggle-title">Baixar Relatório Completo (PDF)</div><div class="action-toggle-desc">Diagnóstico, comunicação, gatilhos, objeções e plano de ação 30/60/90</div></div><div class="action-toggle-arrow">⬇</div></button></div>
     </div>
-    <div class="save-banner"><div class="save-banner-text"><strong>💾 Salvar este cliente?</strong>Registre o nome, contato e observações no banco de clientes. O relatório completo fica disponível para download a qualquer momento.</div><button class="btn-save-client" onclick="goSaveClient()">Registrar</button></div>`;
+    <div class="save-banner"><div class="save-banner-text"><strong>💾 Salvar este cliente?</strong>Registre o nome, contato e observações no banco de clientes.</div><button class="btn-save-client" onclick="goSaveClient()">Registrar</button></div>`;
 }
 
 function goSaveClient(){
@@ -594,158 +570,20 @@ function goSaveClient(){
   document.getElementById('f-nome').focus();
 }
 
-/* ======================================================
-   RELATÓRIO COMPLETO — modelo "Diagnóstico Comportamental
-   Integrado" (matriz de comunicação + guia de combinações)
-   ====================================================== */
-function buildFullReport(domKey,secKey,compKeys,pct,meta){
-  const P=PROFILES;const dp=P[domKey];const sp=secKey?P[secKey]:null;
-  const comp=(compKeys||[]).filter(k=>k&&k!==domKey&&k!==secKey).map(k=>P[k]);
-  meta=meta||{};
-  const pctTxt=v=>(v!=null?' ('+v+'%)':'');
-  const comboNome=dp.name+(sp?' + '+sp.name:'')+(comp.length?' + '+comp.map(c=>c.name).join(' + '):'');
-  const traits=[dp].concat(sp?[sp]:[]);
-
-  const perfilTxt=sp?
-    ('Este cliente combina duas forças predominantes: <strong>'+dp.name+'</strong>'+pctTxt(pct&&pct.dom)+', que revela alguém '+dp.resumo.charAt(0).toLowerCase()+dp.resumo.slice(1)+' Combinado ao traço <strong>'+sp.name+'</strong>'+pctTxt(pct&&pct.sec)+', que revela alguém '+sp.resumo.charAt(0).toLowerCase()+sp.resumo.slice(1)+'</p><p class="rp-p">'+(dp.combinados[secKey]||'A combinação exige adaptar a comunicação para os dois traços simultaneamente.'))
-    : dp.resumo;
-  const compTxt=comp.length?('<p class="rp-p">Também aparecem, em menor intensidade, traços de <strong>'+comp.map(c=>c.name+pctTxt(pct&&pct.comp&&pct.comp[c===dp?domKey:(c===sp?secKey:compKeys.find(k=>P[k]===c))])).join(', ')+'</strong>, que merecem atenção pontual durante a conversa.</p>'):'';
-
-  const gatilhos=[];traits.forEach(t=>t.gatilhos.forEach(g=>{if(!gatilhos.includes(g))gatilhos.push(g);}));
-  const nuncaDiga=[];traits.forEach(t=>t.nuncaDiga.forEach(g=>{if(!nuncaDiga.includes(g))nuncaDiga.push(g);}));
-  const digaAssim=[];traits.forEach(t=>t.digaAssim.forEach(g=>{if(!digaAssim.includes(g))digaAssim.push(g);}));
-  const validacao=[];traits.forEach(t=>t.validacao.forEach(g=>{if(!validacao.includes(g))validacao.push(g);}));
-
-  const estresseTxt='Sob pressão, o gatilho central deste perfil é o <strong>'+dp.medo+'</strong>: a tendência é evitar situações que envolvam '+dp.vermelho.slice(0,2).join(' e ').toLowerCase()+'.'+(sp?' Combinado ao traço '+sp.name+', também pode surgir o <strong>'+sp.medo+'</strong>, com sensibilidade extra a '+sp.gatilhos.slice(0,2).join(' e ').toLowerCase()+'.':'')+' Resultado prático: reações que parecem contraditórias podem, na verdade, ser as duas faces do mesmo medo.';
-
-  const falaOuveRows=traits.map(t=>'<tr><td><strong>'+t.name+'</strong></td><td>'+t.fala+'</td><td>'+t.ouve+'</td><td>'+t.decisionMaker+'</td></tr>').join('');
-
-  const gT=dp.verde.map(t=>'<span class="rp-chip" style="background:#e8f7f1;color:#1d9e75">'+t+'</span>').join('');
-  const rT=dp.vermelho.map(t=>'<span class="rp-chip" style="background:#fbeceb;color:#c0392b">'+t+'</span>').join('');
-
-  const acoes=dp.acoes.map(a=>'<li>'+a+'</li>').join('');
-  const secAcoes=sp?sp.acoes.slice(0,3).map(a=>'<li>'+a+'</li>').join(''):'';
-
-  const objecao1='"Sinto que você ainda não decidiu de verdade."';
-  const resp1=domKey==='analitico'?'"Prefiro decidir com base em dados sólidos, não por impulso. Deixa eu revisar os números com calma e te dou uma resposta consistente."':
-    domKey==='relacional'?'"Preciso sentir que essa relação é de confiança antes de avançar. Não é enrolação — é o meu jeito de me comprometer de verdade."':
-    domKey==='dominante'?'"Não decido rápido por decidir — decido rápido quando o valor está claro. Me mostra o resultado direto e eu resolvo agora."':
-    domKey==='seguro'?'"Preciso ter certeza de que não vou me arrepender. Quero entender cada garantia antes do próximo passo."':
-    '"Não é indecisão, é exigência. Só avanço quando tenho certeza de que é o melhor, não apenas o comum."';
-  const objecao2='"Você desaparece / muda de comportamento e isso me deixa inseguro."';
-  const resp2='"Meu jeito de funcionar tem um padrão: '+dp.keyphrase.replace(/"/g,'')+'. Se a gente alinhar expectativas com antecedência, isso deixa de parecer imprevisível e passa a ser previsível."';
-
-  const funnelRows=dp.funil.map(f=>'<tr><td><strong>'+f.stage+'</strong></td><td>'+f.action+'</td></tr>').join('');
-
-  const nomeLabel=meta.nome?meta.nome:'Cliente sem nome registrado';
-  const metaChips='<span><b>Cliente:</b> '+nomeLabel+'</span><span><b>Data:</b> '+(meta.data||new Date().toLocaleDateString('pt-BR'))+'</span>'+(meta.funil?'<span><b>Etapa no funil:</b> '+meta.funil+'</span>':'')+(meta.tel||meta.email?'<span><b>Contato:</b> '+[meta.tel,meta.email].filter(Boolean).join(' · ')+'</span>':'');
-
-  return `
-  <div class="rp-brand">O Código da Venda Humana® — Diagnóstico Comportamental Integrado</div>
-  <div class="rp-h1">${comboNome}</div>
-  <div class="rp-sub">Relatório completo de perfil comportamental e estratégia de comunicação</div>
-  <div class="rp-meta">${metaChips}</div>
-
-  <div class="rp-h2">1. Perfil Comportamental</div>
-  <p class="rp-p">${perfilTxt}</p>
-  ${compTxt}
-  <div class="rp-box">${dp.keyphrase}${sp?' · '+sp.keyphrase:''}</div>
-
-  <div class="rp-h2">2. Como Este Cliente Se Comunica</div>
-  <table class="rp-table"><tr><th>Traço</th><th>Fala</th><th>Ouve</th><th>Decide quando...</th></tr>${falaOuveRows}</table>
-
-  <div class="rp-h2">3. Comportamento Sob Estresse</div>
-  <p class="rp-p">${estresseTxt}</p>
-  <div class="rp-col-title no" style="margin-top:8px">Gatilhos de conflito a evitar</div>
-  <ul class="rp-ul">${gatilhos.map(g=>'<li>'+g+'</li>').join('')}</ul>
-
-  <div class="rp-h2">4. O Que Funciona × O Que Bloqueia</div>
-  <div style="margin-bottom:6px">${gT}</div>
-  <div>${rT}</div>
-
-  <div class="rp-h2">5. Estratégia de Comunicação</div>
-  <div class="rp-cols">
-    <div class="rp-col"><div class="rp-col-title no">❌ Nunca diga</div><ul class="rp-ul">${nuncaDiga.map(g=>'<li>'+g+'</li>').join('')}</ul></div>
-    <div class="rp-col"><div class="rp-col-title ok">✅ Diga assim</div><ul class="rp-ul">${digaAssim.map(g=>'<li>'+g+'</li>').join('')}</ul></div>
-  </div>
-
-  <div class="rp-h2">6. Frases de Validação</div>
-  ${validacao.map(v=>'<div class="rp-box">'+v+'</div>').join('')}
-
-  <div class="rp-h2">7. Quebra de Objeções Comuns</div>
-  <p class="rp-p"><strong>Objeção:</strong> ${objecao1}</p>
-  <div class="rp-box">${resp1}</div>
-  <p class="rp-p"><strong>Objeção:</strong> ${objecao2}</p>
-  <div class="rp-box">${resp2}</div>
-
-  <div class="rp-h2">8. Guia de Abordagem</div>
-  <ul class="rp-ul">${acoes}</ul>
-  ${sp?('<div class="rp-col-title" style="margin-top:8px;color:#c9973a">Ajuste secundário — traço '+sp.name+'</div><ul class="rp-ul">'+secAcoes+'</ul>'):''}
-
-  <div class="rp-h2">9. Estratégia no Funil de Vendas</div>
-  <table class="rp-table"><tr><th>Etapa</th><th>Ação recomendada</th></tr>${funnelRows}</table>
-
-  <div class="rp-h2">10. Plano de Ação (30/60/90 dias)</div>
-  <div class="rp-phase"><div class="rp-phase-title">Dias 1–30 · Fundação</div><p class="rp-p" style="margin:0">${dp.acoes[0]||''} ${dp.acoes[1]?('· '+dp.acoes[1]):''}</p></div>
-  <div class="rp-phase"><div class="rp-phase-title">Dias 31–60 · Consolidação</div><p class="rp-p" style="margin:0">${dp.acoes[2]||dp.acoes[0]||''} ${sp?('· Trabalhe o ajuste do traço '+sp.name+': '+(sp.acoes[0]||'')):''}</p></div>
-  <div class="rp-phase"><div class="rp-phase-title">Dias 61–90 · Elevação</div><p class="rp-p" style="margin:0">${dp.acoes[dp.acoes.length-1]||''} Consolide o script de fechamento: ${dp.script.fech}</p></div>
-
-  <div class="rp-h2">11. Script de Abordagem</div>
-  <div class="rp-box"><strong>Abertura:</strong> ${dp.script.ab}</div>
-  <div class="rp-box"><strong>Desenvolvimento:</strong> ${dp.script.dev}</div>
-  <div class="rp-box"><strong>Fechamento:</strong> ${dp.script.fech}</div>
-
-  <div class="rp-h2">12. Indicadores de Sucesso</div>
-  <ul class="rp-ul">
-    <li>O cliente decide com base em: ${dp.decide}</li>
-    <li>A comunicação deixa de gerar os gatilhos: ${gatilhos.slice(0,2).join(', ').toLowerCase()}</li>
-    <li>O relacionamento evolui de "objeção recorrente" para confiança estabelecida</li>
-  </ul>
-  ${meta.obs?('<div class="rp-h2">13. Observações Registradas</div><p class="rp-p">'+meta.obs+'</p>'):''}
-
-  <div class="rp-footer">Gerado por O Código da Venda Humana® · Relatório baseado no método de leitura comportamental por traços</div>`;
-}
-
-function downloadReportPDF(domKey,secKey,compKeys,pct,meta,filename){
-  if(!domKey){showToast('⚠️ Defina ao menos o perfil dominante para gerar o relatório');return;}
-  if(typeof html2pdf==='undefined'){showToast('⚠️ Não foi possível carregar o gerador de PDF. Verifique sua conexão.');return;}
-  showToast('📄 Gerando relatório em PDF...');
-  const container=document.createElement('div');
-  container.className='report-print';
-  container.innerHTML=buildFullReport(domKey,secKey,compKeys,pct,meta);
-  document.body.appendChild(container);
-  const opt={margin:[10,10,14,10],filename:filename||'relatorio-diagnostico.pdf',image:{type:'jpeg',quality:0.97},html2canvas:{scale:2,useCORS:true,windowWidth:794},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},pagebreak:{mode:['css','legacy'],avoid:['.rp-box','.rp-phase','tr']}};
-  html2pdf().set(opt).from(container).save().then(()=>{container.remove();showToast('✓ Relatório baixado com sucesso!');}).catch(()=>{container.remove();showToast('⚠️ Erro ao gerar o PDF. Tente novamente.');});
-}
-
-function downloadResultReport(){
-  const meta={data:new Date().toLocaleDateString('pt-BR')};
-  const safeName=(PROFILES[rDom]?PROFILES[rDom].name:'diagnostico').toLowerCase().replace(/[^a-z0-9]+/g,'-');
-  downloadReportPDF(rDom,rSec,rComp,rPct,meta,'relatorio-'+safeName+'.pdf');
-}
-
-function downloadClientReport(id){
-  const c=clients.find(x=>x.id===id);if(!c)return;
-  if(!c.perfil1){showToast('⚠️ Este cliente ainda não tem perfil definido. Edite o registro e selecione um perfil.');return;}
-  const rm=c.reportMeta;
-  const compKeys=rm&&rm.comp?rm.comp:[];
-  const pct=rm&&rm.pct?rm.pct:{dom:30,sec:25,comp:{}};
-  const meta={nome:c.nome,data:c.data?new Date(c.data+'T12:00:00').toLocaleDateString('pt-BR'):new Date().toLocaleDateString('pt-BR'),tel:c.tel,email:c.email,funil:c.funil,obs:c.obs};
-  const safeName=(c.nome||'cliente').toLowerCase().replace(/[^a-z0-9]+/g,'-');
-  downloadReportPDF(c.perfil1,c.perfil2||null,compKeys,pct,meta,'relatorio-'+safeName+'.pdf');
-}
-
-function saveClient(){
+async function saveClient(){
   const nome=document.getElementById('f-nome').value.trim();
   if(!nome){showToast('⚠️ Informe o nome do cliente');return;}
   const id=document.getElementById('edit-id').value;
-  const perfil1=document.getElementById('f-perfil1').value;
-  const client={id:id||Date.now().toString(),nome,data:document.getElementById('f-data').value,tel:document.getElementById('f-tel').value.trim(),email:document.getElementById('f-email').value.trim(),perfil1,perfil2:document.getElementById('f-perfil2').value,funil:document.getElementById('f-funil').value,obs:document.getElementById('f-obs').value.trim()};
-  if(perfil1&&perfil1===rDom){client.reportMeta={comp:rComp,pct:rPct};}
-  else if(id){const prev=clients.find(c=>c.id===id);if(prev&&prev.reportMeta)client.reportMeta=prev.reportMeta;}
-  if(id){const idx=clients.findIndex(c=>c.id===id);if(idx>=0)clients[idx]={...clients[idx],...client};}
-  else{clients.unshift(client);}
-  persistClients();clearForm();renderClients();showToast('✓ Cliente salvo com sucesso!');
+  const payload={nome,data:document.getElementById('f-data').value,tel:document.getElementById('f-tel').value.trim(),email:document.getElementById('f-email').value.trim(),perfil1:document.getElementById('f-perfil1').value,perfil2:document.getElementById('f-perfil2').value,funil:document.getElementById('f-funil').value,obs:document.getElementById('f-obs').value.trim()};
+  const btn=document.querySelector('.btn-save-form');if(btn)btn.disabled=true;
+  try{
+    let data;
+    if(id){data=await apiFetch('/api/clients',{method:'PUT',body:JSON.stringify({id,...payload})});}
+    else{data=await apiFetch('/api/clients',{method:'POST',body:JSON.stringify(payload)});}
+    clients=data.clients||clients;
+    clearForm();renderClients();showToast('✓ Cliente salvo com sucesso!');
+  }catch(e){showToast('⚠️ '+e.message);}
+  if(btn)btn.disabled=false;
 }
 
 function clearForm(){
@@ -774,7 +612,14 @@ function editClient(id){
   document.getElementById('form-section').scrollIntoView({behavior:'smooth'});
 }
 
-function deleteClient(id){clients=clients.filter(c=>c.id!==id);persistClients();renderClients();showToast('🗑️ Cliente removido');}
+async function deleteClient(id){
+  if(!confirm('Remover este cliente do banco?'))return;
+  try{
+    const data=await apiFetch('/api/clients?id='+encodeURIComponent(id),{method:'DELETE'});
+    clients=data.clients||clients.filter(c=>c.id!==id);
+    renderClients();showToast('🗑️ Cliente removido');
+  }catch(e){showToast('⚠️ '+e.message);}
+}
 
 function renderClients(){
   const q=(document.getElementById('search-bar').value||'').toLowerCase();
@@ -782,42 +627,59 @@ function renderClients(){
   document.getElementById('client-count').textContent=clients.length;
   const list=document.getElementById('clients-list');
   if(!clients.length){list.innerHTML=`<div class="empty-state"><div class="empty-state-icon">📋</div><div class="empty-state-text">Nenhum cliente registrado ainda.<br>Faça um diagnóstico e clique em <strong style="color:var(--gold-light)">Registrar</strong> para começar.</div></div>`;return;}
-  if(!filtered.length){list.innerHTML=`<div class="empty-state"><div class="empty-state-icon">🔎</div><div class="empty-state-text">Nenhum cliente encontrado para<br><strong style="color:var(--gold-light)">"${q}"</strong></div></div>`;return;}
+  if(!filtered.length){list.innerHTML=`<div class="empty-state"><div class="empty-state-icon">🔎</div><div class="empty-state-text">Nenhum cliente encontrado para<br><strong style="color:var(--gold-light)">"${escapeHtml(q)}"</strong></div></div>`;return;}
   list.innerHTML=filtered.map(c=>{
     const p1=c.perfil1?PROFILES[c.perfil1]:null,p2=c.perfil2?PROFILES[c.perfil2]:null;
     const initials=(c.nome||'?').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
     const avatarColor=p1?p1.dotColor:'#4a6080';
     const dateStr=c.data?new Date(c.data+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'numeric'}):'';
-    const p1tag=p1?`<div class="client-profile-tag" style="background:rgba(${hexToRgb(p1.dotColor)},0.15);border:1px solid rgba(${hexToRgb(p1.dotColor)},0.4);color:${p1.dotColor}">${p1.emoji} ${p1.name}</div>`:'';
-    const p2tag=p2?`<div class="client-profile-tag" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.55)">${p2.emoji} ${p2.name}</div>`:'';
-    const funilTag=c.funil?`<div class="client-profile-tag" style="background:rgba(201,151,58,0.1);border:1px solid rgba(201,151,58,0.3);color:var(--gold-light)">◇ ${c.funil}</div>`:'';
-    return`<div class="client-card"><div class="client-card-header"><div class="client-avatar" style="background:${avatarColor}">${initials}</div><div class="client-info"><div class="client-name">${c.nome}</div><div class="client-contact">${[c.tel,c.email].filter(Boolean).join(' · ')||'Sem contato registrado'}</div></div><div class="client-date">${dateStr}</div></div><div class="client-profiles">${p1tag}${p2tag}${funilTag}</div>${c.obs?`<div class="client-obs">${c.obs}</div>`:''}<div class="client-actions"><button class="btn-client-action" onclick="editClient('${c.id}')">✏️ Editar</button>${p1?`<button class="btn-client-action" onclick="downloadClientReport('${c.id}')">📄 Relatório PDF</button>`:''}<button class="btn-client-action del" onclick="deleteClient('${c.id}')">🗑️ Remover</button></div></div>`;
+    const p1tag=p1?`<div class="client-profile-tag" style="background:rgba(${hexToRgb(p1.dotColor)},0.15);border:1px solid rgba(${hexToRgb(p1.dotColor)},0.4);color:${p1.dotColor}">${p1.emoji} ${escapeHtml(p1.name)}</div>`:'';
+    const p2tag=p2?`<div class="client-profile-tag" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.55)">${p2.emoji} ${escapeHtml(p2.name)}</div>`:'';
+    const funilTag=c.funil?`<div class="client-profile-tag" style="background:rgba(201,151,58,0.1);border:1px solid rgba(201,151,58,0.3);color:var(--gold-light)">◇ ${escapeHtml(c.funil)}</div>`:'';
+    const contato=escapeHtml([c.tel,c.email].filter(Boolean).join(' · ')||'Sem contato registrado');
+    return`<div class="client-card"><div class="client-card-header"><div class="client-avatar" style="background:${avatarColor}">${escapeHtml(initials)}</div><div class="client-info"><div class="client-name">${escapeHtml(c.nome)}</div><div class="client-contact">${contato}</div></div><div class="client-date">${dateStr}</div></div><div class="client-profiles">${p1tag}${p2tag}${funilTag}</div>${c.obs?`<div class="client-obs">${escapeHtml(c.obs)}</div>`:''}<div class="client-actions"><button class="btn-client-action" onclick="editClient('${c.id}')">✏️ Editar</button><button class="btn-client-action del" onclick="deleteClient('${c.id}')">🗑️ Remover</button></div></div>`;
   }).join('');
 }
 
 /* ===== ACESSO / LOGIN ===== */
-const ADMIN_EMAIL='ocodigodavendahumana@gmail.com';
 let currentEmail=null,currentNome=null,isAdmin=false;
 
-async function getAccessLog(){try{const r=await window.storage.get('vh_access_log',true);return r?JSON.parse(r.value):[];}catch(e){return[];}}
-async function setAccessLog(list){try{await window.storage.set('vh_access_log',JSON.stringify(list),true);}catch(e){}}
+async function checkSession(){
+  try{
+    const data=await apiFetch('/api/session');
+    if(data.authenticated){
+      currentNome=data.nome;currentEmail=data.email;isAdmin=data.isAdmin;
+      await grantAccess();
+      return true;
+    }
+  }catch(e){}
+  return false;
+}
 
 async function handleLogin(){
   const nomeInput=document.getElementById('login-nome');
   const emailInput=document.getElementById('login-email');
+  const passwordInput=document.getElementById('login-password');
   const nome=(nomeInput.value||'').trim();
   const email=(emailInput.value||'').trim().toLowerCase();
+  const password=passwordInput.value||'';
   if(!nome){showToast('⚠️ Informe seu nome');return;}
   if(!email||!email.includes('@')){showToast('⚠️ Informe um e-mail válido');return;}
+  if(!password){showToast('⚠️ Informe a senha de acesso');return;}
   const btn=document.getElementById('btn-login');btn.disabled=true;btn.textContent='Entrando...';
-  currentEmail=email;currentNome=nome;isAdmin=(email===ADMIN_EMAIL);
-  const log=await getAccessLog();
-  if(!log.find(c=>c.email===email)){log.unshift({nome,email,accessedAt:new Date().toISOString()});await setAccessLog(log);}
-  grantAccess();
+  try{
+    const data=await apiFetch('/api/login',{method:'POST',body:JSON.stringify({nome,email,password})});
+    currentNome=data.nome;currentEmail=data.email;isAdmin=data.isAdmin;
+    passwordInput.value='';
+    await grantAccess();
+  }catch(e){
+    showToast('⚠️ '+e.message);
+  }
   btn.disabled=false;btn.textContent='Entrar';
 }
 
-function grantAccess(){
+async function grantAccess(){
+  await loadClients();
   showScreen('intro');
   injectLogoutBadge();
   if(isAdmin)injectAdminNav();
@@ -842,27 +704,36 @@ function injectLogoutBadge(){
   b.onclick=logout;app.appendChild(b);
 }
 
-function logout(){
-  currentEmail=null;currentNome=null;isAdmin=false;
+async function logout(){
+  try{await apiFetch('/api/logout',{method:'POST'});}catch(e){}
+  currentEmail=null;currentNome=null;isAdmin=false;clients=[];
   const b=document.getElementById('logout-badge');if(b)b.remove();
   document.querySelectorAll('.nav-admin').forEach(n=>n.remove());
   document.getElementById('login-nome').value='';
   document.getElementById('login-email').value='';
+  document.getElementById('login-password').value='';
   showScreen('login');
 }
 
 async function renderAdmin(){
-  const log=await getAccessLog();
+  let log=[];
+  try{const data=await apiFetch('/api/access-log');log=data.log||[];}catch(e){return;}
   document.getElementById('admin-access-count').textContent=log.length;
   const wrap=document.getElementById('admin-access-list');
   wrap.innerHTML=log.length?log.map(c=>{
     const initials=(c.nome||'?').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
     const dateStr=new Date(c.accessedAt).toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
-    return`<div class="client-card"><div class="client-card-header"><div class="client-avatar" style="background:${c.email===ADMIN_EMAIL?'var(--gold)':'#4a6080'}">${initials}</div><div class="client-info"><div class="client-name">${c.nome}${c.email===ADMIN_EMAIL?' <span style="color:var(--gold-light);font-size:11px">(admin)</span>':''}</div><div class="client-contact">${c.email}</div></div><div class="client-date">${dateStr}</div></div></div>`;
+    const isAdminRow=c.email===currentAdminEmailHint;
+    return`<div class="client-card"><div class="client-card-header"><div class="client-avatar" style="background:#4a6080">${escapeHtml(initials)}</div><div class="client-info"><div class="client-name">${escapeHtml(c.nome)}</div><div class="client-contact">${escapeHtml(c.email)}</div></div><div class="client-date">${dateStr}</div></div></div>`;
   }).join(''):'<div class="empty-state"><div class="empty-state-icon">👤</div><div class="empty-state-text">Nenhum acesso registrado ainda.</div></div>';
 }
+const currentAdminEmailHint=''; // reservado
 
-(async()=>{await loadClients();renderClients();document.getElementById('f-data').value=new Date().toISOString().split('T')[0];})();
+(async()=>{
+  const logged=await checkSession();
+  if(!logged){showScreen('login');}
+  document.getElementById('f-data').value=new Date().toISOString().split('T')[0];
+})();
 </script>
 </body>
 </html>
